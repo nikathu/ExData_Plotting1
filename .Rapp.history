@@ -1,0 +1,320 @@
+demo()
+defaults write org.R-project.R force.LANG en_US.UTF-8
+mean(mtcars$mpg)
+getwd
+x <- c(0.5, 0.6)
+x
+y <- c(1.7, "a")
+y
+y <- data.frame(a = 1, b = "a")
+dput(y)
+dput(y, file = "y.R")
+new.y <- dget("y.R")
+new.y
+x <- "foo"
+y <- data.frame(a = 1, b = "a")
+dump(c("x", "y"), file = "data.R")
+rm(x,y)
+source("data.R")
+y
+x
+x <- c(4, TRUE)
+x
+x <- list(2, "a", "b", TRUE)
+x[[2]]
+x <- 1:4
+y <- 2
+x+y
+x <- c(3, 5, 1, 10, 12, 6)
+x[x>=6]=0
+x
+x <- c(3, 5, 1, 10, 12, 6)
+x[x!=6]<-0
+x
+x <- c(3, 5, 1, 10, 12, 6)
+x[x>0]<-6
+x
+x <- c(3, 5, 1, 10, 12, 6)
+x[x<6]==0
+x <- c(3, 5, 1, 10, 12, 6)
+x[x==0]<-6
+x
+x <- c(3, 5, 1, 10, 12, 6)
+x[x<6]<-0
+x
+x <- c(3, 5, 1, 10, 12, 6)
+x[x<=5]<-0
+x
+read.csv(file="/Users/admin/Downloads")
+read.csv("/Users/admin/Downloads")
+cube <- function(x, n) {#
+        x^3#
+}
+cube(3)
+x <- 1:10#
+if(x > 5) {#
+        x <- 0#
+}
+f <- function(x) {#
+        g <- function(y) {#
+                y + z#
+        }#
+        z <- 4#
+        x + g(x)#
+}
+z <- 10#
+f(3)
+x <- 5#
+y <- if(x < 3) {#
+        NA#
+} else {#
+        10#
+}
+y
+h <- function(x, y = NULL, d = 3L) {#
+        z <- cbind(x, d)#
+        if(!is.null(y))#
+                z <- z + y#
+        else#
+                z <- z + f#
+        g <- x + y / z#
+        if(d == 3L)#
+                return(g)#
+        g <- g + 10#
+        g#
+}
+?create.dir
+x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+lapply(x, mean)
+sapply(x, mean)
+mean(x)
+x <- matrix(rnorm(200), 20, 10)
+apply(x, 2, mean)
+apply(x, 1, mean)
+apply(x, 3, mean)
+rowSums(x)
+rowMeans(x)
+apply(x, 1, quantile, probs = c(0.25, 0.75))
+mapply(rep, 1:4, 4:1)
+mapply(rep, 1:4, 4:1, MoreArgs = x)
+mapply(rep, 1:4, 4:1, SIMPLIFY = FALSE)
+mapply(rep, 1:4, 4:1, USE.NAMES = FALSE)
+swirl()
+library(swirl)
+swirl()
+head(flags)
+dim(flags)
+class(flags)
+cls_list <- lapply(flags, class)
+cls_list
+class(cls_list)
+as.character(cls_list)
+cls_vect <- sapply(flags, class)
+class(cls_vect)
+sum(flags$orange)
+flag_colors <- flags[, 11:17]
+head(flag_colors)
+lapply(flag_colors, sum)
+sapply(flag_colors, sum)
+sapply(flag_colors, mean)
+flag_shapes <- flags[, 19:23]
+lapply(flag_shapes, range)
+shape_mat <- sapply(flag_shapes, range)
+shape_mat
+class(shape_mat)
+unique(c(3, 4, 5, 5, 5, 6, 6))
+unique_vals <- lapply(flags, unique)
+unique_vals
+lapply(unique_vals, length)
+sapply(unique_vals, length)
+sapply(flags, unique)
+lapply(unique_vals, function(elem) elem[2])
+sapply(flags, unique)
+vapply(flags, unique, numeric(1))
+ok()
+sapply(flags, class)
+vapply(flags, class, character(1))
+?tapply
+table(flags$landmass)
+table(flags$animate)
+tapply(flags$animate, flags$landmass, mean)
+tapply(flags$population, flags$red, summary)
+tapply(flags$population, flags$landmass, summary)
+done()
+quit()
+library(datasets)#
+data(iris)
+?iris
+sapply(iris, mean)
+tapply(iris$Sepal.Length, iris$Species, mean)
+apply(iris, 2, mean)
+apply(iris, 2, mean, rm.na = TRUE)
+apply(iris, 2, mean, na.rm = TRUE)
+colMeans(iris)
+apply(iris[,1:4], 1, mean)
+apply(iris, 1, mean)
+rowMeans(iris[,1:4])
+apply(iris[,1:4], 2, mean)
+library(datasets)#
+data(mtcars)
+?mtcars
+lapply(mtcars, mean)
+sapply(mtcars, cyl, mean)
+with(mtcars, tapply(mpg, cyl, mean))
+tapply(mtcars$cyl, mtcars$mpg, mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
+apply(mtcars, 2, mean)
+split(mtcars, mtcars$cyl)
+mean(mtcars$mpg, mtcars$cyl)
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+split(mtcars, mtcars$cyl)
+x <- split(mtcars, mtcars$cyl)
+x[4]
+x$'4'
+tapply(x$'4'$hp, x$'8'$hp, mean)
+mtcars
+> lapply(mtcars, mean)
+lapply(mtcars, mean)
+lapply(mtcars$hp, mean)
+tapply(mtcars$hp, mtcars$hp, mean)
+debug(ls)
+ls()
+n
+mtcars
+lapply(mtcars, mean)
+tapply(mtcars$hp, mtcars$cyl, mean)
+x <- tapply(mtcars$hp, mtcars$cyl, mean)
+x[1,]
+x[,1]
+dim(x)
+x[4]
+x$4
+x[,,1]
+x[,,]
+x[,]
+x[,,,]
+dim(x)
+x
+x <- apply(mtcars$hp, mtcars$cyl, mean)
+x <- sapply(mtcars$hp, mtcars$cyl, mean)
+x <- tapply(mtcars$hp, mtcars$cyl, mean)
+class(x)
+as.list(x)
+x$'4'-x$'8'
+as.vector(x)
+x[1]
+x[3]-x[1]
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+mean(mtcars$mpg, mycars$cyl)
+apply(mtcars, 2, mean)
+sapply(mtcars, cyl, mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
+with(mtcars, tapply(mpg, cyl, mean))
+tapply(mtcars$cyl, mtcars$mpg, mean)
+lapply(mtcars, mean)
+a <- "d23d55da571b8da7db770db4378f5ec913160e42"
+a
+b <- "d23d55da571b8da7db770db4378f5ec913160e42"
+is.same(a,b)
+9c554d5b7a39ea8fd13cc4b9734b4043e98d5484 == 9c554d5b7a39ea8fd13cc4b9734b4043e98d5484
+"9c554d5b7a39ea8fd13cc4b9734b4043e98d5484" == "9c554d5b7a39ea8fd13cc4b9734b4043e98d5484"
+"61afb7d43e3be4544f13bc6528ab887ef5895beb" == "61afb7d43e3be4544f13bc6528ab887ef5895beb"
+set.seed(1)#
+rpois(5, 2)
+set.seed(10)#
+x <- rep(0:1, each = 5)#
+e <- rnorm(10, 0, 20)#
+y <- 0.5 + 2 * x + e
+x <- rnorm(100)
+hist(x)
+y <- rnorm(100)
+plot(x, y)
+model <- lm(x~y)
+abline(model)
+z <- rnorm(100)
+plot(x, z)
+plot(x, y)
+par(mar = c(2, 2, 2, 2))
+plot(x, y)
+par(mar = c(4, 4, 2, 2))
+plot(x, y)
+plot(x, y, pch =20)
+plot(x, y, pch =1)
+plot(x, y, pch =2)
+plot(x, y, pch =3)
+plot(x, y, pch =4)
+plot(x, y, pch =5)
+plot(x, y, pch =6)
+plot(x, y, pch =7)
+plot(x, y, pch =8)
+plot(x, y, pch =9)
+plot(x, y, pch =10)
+plot(x, y, pch =11)
+plot(x, y, pch =12)
+plot(x, y, pch =13)
+plot(x, y, pch =14)
+plot(x, y, pch =15)
+plot(x, y, pch =16)
+plot(x, y, pch =17)
+plot(x, y, pch =18)
+plot(x, y, pch =19)
+plot(x, y, pch =20)
+plot(x, y, pch =21)
+plot(x, y, pch =1)
+example(points)
+plot(x, y, pch =20)
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y, pch =20)
+title(scatterplot)
+title("scatterplot")
+text(-2, -2, "label")
+legend("topleft", legend = "data", pch = 20)
+fit <- lm(y ~ x)
+abline(fir)
+abline(fit)
+generate <- function(i = 1) {#
+    par(mfcol= c(1, i))#
+    while (i > 0){#
+        x <- rnorm(100)#
+        y <- rnorm(100)#
+        fit <- lm(x~y)#
+        plot(x, y)#
+        abline(fit, col = "red")#
+        i = i - 1#
+    }#
+}
+generate(8)
+generate <- function(i = 1) {#
+    par(mfcol= c(1, i), mar = c(1, 1, 1, 1))#
+    while (i > 0){#
+        x <- rnorm(100)#
+        y <- rnorm(100)#
+        fit <- lm(x~y)#
+        plot(x, y)#
+        abline(fit, col = "red")#
+        i = i - 1#
+    }#
+}
+generate(8)
+examples(points)
+example(points)
+dataFile <- "./household_power_consumption.txt"#
+data <- read.table(dataFile, header=TRUE, sep=";", #
+                   stringsAsFactors=FALSE, dec=".")#
+summary(data)#
+subdata <- subset(data, Date == c("1/2/2007", "2/2/2007"))#
+subdata$Global_active_power <- as.numeric(subdata$Global_active_power)#
+hist(subdata$Global_active_power, main = "Global Active Power", #
+     xlab = "Global Active Power", col = "red")#
+png("plot1.png", width=480, height=480)
+getwd()
+dataFile <- "./household_power_consumption.txt"#
+data <- read.table(dataFile, header=TRUE, sep=";", #
+                   stringsAsFactors=FALSE, dec=".")#
+summary(data)#
+subdata <- subset(data, Date == c("1/2/2007", "2/2/2007"))#
+subdata$Global_active_power <- as.numeric(subdata$Global_active_power)#
+hist(subdata$Global_active_power, main = "Global Active Power", #
+     xlab = "Global Active Power", col = "red")#
+png("plot1.png", width=480, height=480)
